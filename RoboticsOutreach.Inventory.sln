@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EAF9B1FA-C3FE-4964-872B-35FF0CA876DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboticsOutreach.Inventory.Api", "src\RoboticsOutreach.Inventory.Api\RoboticsOutreach.Inventory.Api.csproj", "{06BDF376-9CE6-4F3C-81AA-8A64C1275B8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboticsOutreach.Inventory.Domain", "src\RoboticsOutreach.Inventory.Domain\RoboticsOutreach.Inventory.Domain.csproj", "{B37D5D31-C557-4079-8B08-91445129C061}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboticsOutreach.Inventory.Infrastructure", "src\RoboticsOutreach.Inventory.Infrastructure\RoboticsOutreach.Inventory.Infrastructure.csproj", "{E3D7FBDA-C96C-498E-94A4-CBFDA89B3257}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboticsOutreach.Inventory.Application", "src\RoboticsOutreach.Inventory.Application\RoboticsOutreach.Inventory.Application.csproj", "{27934446-9AE7-4F5D-9530-495093CA0353}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{24E3B6CA-3555-45BB-8CF0-D7135347611D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoboticsOutreach.Inventory.Tests", "tests\RoboticsOutreach.Inventory.Tests\RoboticsOutreach.Inventory.Tests.csproj", "{14CBA428-00B2-42DC-B4BB-0291B5A08617}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06BDF376-9CE6-4F3C-81AA-8A64C1275B8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06BDF376-9CE6-4F3C-81AA-8A64C1275B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06BDF376-9CE6-4F3C-81AA-8A64C1275B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06BDF376-9CE6-4F3C-81AA-8A64C1275B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B37D5D31-C557-4079-8B08-91445129C061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B37D5D31-C557-4079-8B08-91445129C061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B37D5D31-C557-4079-8B08-91445129C061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B37D5D31-C557-4079-8B08-91445129C061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D7FBDA-C96C-498E-94A4-CBFDA89B3257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D7FBDA-C96C-498E-94A4-CBFDA89B3257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D7FBDA-C96C-498E-94A4-CBFDA89B3257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D7FBDA-C96C-498E-94A4-CBFDA89B3257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27934446-9AE7-4F5D-9530-495093CA0353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27934446-9AE7-4F5D-9530-495093CA0353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27934446-9AE7-4F5D-9530-495093CA0353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27934446-9AE7-4F5D-9530-495093CA0353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14CBA428-00B2-42DC-B4BB-0291B5A08617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14CBA428-00B2-42DC-B4BB-0291B5A08617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14CBA428-00B2-42DC-B4BB-0291B5A08617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14CBA428-00B2-42DC-B4BB-0291B5A08617}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{06BDF376-9CE6-4F3C-81AA-8A64C1275B8B} = {EAF9B1FA-C3FE-4964-872B-35FF0CA876DA}
+		{B37D5D31-C557-4079-8B08-91445129C061} = {EAF9B1FA-C3FE-4964-872B-35FF0CA876DA}
+		{E3D7FBDA-C96C-498E-94A4-CBFDA89B3257} = {EAF9B1FA-C3FE-4964-872B-35FF0CA876DA}
+		{27934446-9AE7-4F5D-9530-495093CA0353} = {EAF9B1FA-C3FE-4964-872B-35FF0CA876DA}
+		{14CBA428-00B2-42DC-B4BB-0291B5A08617} = {24E3B6CA-3555-45BB-8CF0-D7135347611D}
+	EndGlobalSection
+EndGlobal
