@@ -1,6 +1,9 @@
 using RoboticsOutreach.Inventory.Domain.Models;
+using RoboticsOutreach.Inventory.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
+
+using var inventoryContext = new InventoryContext();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

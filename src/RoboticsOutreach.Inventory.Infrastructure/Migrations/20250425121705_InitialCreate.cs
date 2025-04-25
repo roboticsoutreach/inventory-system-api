@@ -15,10 +15,10 @@ namespace RoboticsOutreach.Inventory.Infrastructure.Migrations
                 name: "Organisations",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,16 +29,16 @@ namespace RoboticsOutreach.Inventory.Infrastructure.Migrations
                 name: "InventoryItemTypes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ManufacturerId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    IsConsumable = table.Column<bool>(type: "INTEGER", nullable: false),
-                    ModelName = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    UnitPrice = table.Column<int>(type: "INTEGER", nullable: true),
-                    UnitPriceDate = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    ResupplyUri = table.Column<string>(type: "TEXT", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ManufacturerId = table.Column<Guid>(type: "uuid", nullable: true),
+                    IsConsumable = table.Column<bool>(type: "boolean", nullable: false),
+                    ModelName = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    UnitPrice = table.Column<int>(type: "integer", nullable: true),
+                    UnitPriceDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    ResupplyUri = table.Column<string>(type: "text", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,10 +54,10 @@ namespace RoboticsOutreach.Inventory.Infrastructure.Migrations
                 name: "BomItems",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ItemTypeId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    IngredientTypeId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ItemTypeId = table.Column<Guid>(type: "uuid", nullable: false),
+                    IngredientTypeId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -80,17 +80,17 @@ namespace RoboticsOutreach.Inventory.Infrastructure.Migrations
                 name: "InventoryItems",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ItemTypeId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    AssetTag = table.Column<string>(type: "TEXT", nullable: true),
-                    SerialNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    LocationId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    State = table.Column<int>(type: "INTEGER", nullable: false),
-                    Summary = table.Column<string>(type: "TEXT", nullable: true),
-                    AcquiredPrice = table.Column<int>(type: "INTEGER", nullable: true),
-                    AcquiredAt = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ItemTypeId = table.Column<Guid>(type: "uuid", nullable: false),
+                    AssetTag = table.Column<string>(type: "text", nullable: true),
+                    SerialNumber = table.Column<string>(type: "text", nullable: true),
+                    LocationId = table.Column<Guid>(type: "uuid", nullable: true),
+                    State = table.Column<int>(type: "integer", nullable: false),
+                    Summary = table.Column<string>(type: "text", nullable: true),
+                    AcquiredPrice = table.Column<int>(type: "integer", nullable: true),
+                    AcquiredAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {

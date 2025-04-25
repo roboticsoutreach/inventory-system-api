@@ -11,18 +11,10 @@ public class InventoryContext : DbContext
     public DbSet<InventoryItemType> InventoryItemTypes { get; set; }
     public DbSet<Organisation> Organisations { get; set; }
 
-    public string DbPath { get; }
-
-    public InventoryContext()
-    {
-        var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        DbPath = Path.Join(path, "inventory.db");
-    }
-
-    // The following configures EF to create a Sqlite database file in the
-    // special "local" folder for your platform.
+    // The following configures EF to connect to a Postgres database
+    // according to the set connection string.
     protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlite($"Data Source={DbPath}");
+        => options.UseNpgsql("Host=localhost; Database=sroinventory; Username=postgres;Password=postgres");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -8,6 +8,7 @@ More to follow soon.
 
 ```sh
 dotnet restore
+dotnet ef database update
 ```
 
 ## Running
