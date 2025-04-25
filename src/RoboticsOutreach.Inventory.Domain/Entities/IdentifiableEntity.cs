@@ -9,5 +9,5 @@ public abstract class IdentifiableEntity : Entity, IIdentifiableEntity
     /// <summary>
     /// The identifier of the entity.
     /// </summary>
-    public Guid Id { get; set; }
+    public Guid Id { get; set; } = Guid.CreateVersion7();
 }

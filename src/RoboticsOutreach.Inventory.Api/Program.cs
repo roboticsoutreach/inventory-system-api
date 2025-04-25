@@ -1,4 +1,5 @@
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using RoboticsOutreach.Inventory.Domain.Models;
 using RoboticsOutreach.Inventory.Infrastructure;
@@ -19,7 +20,7 @@ builder.Services.AddSwaggerGen(options => {
     
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-    options.IncludeXmlComments(Assembly.GetAssembly(typeof(Organisation)));
+    options.IncludeXmlComments(Assembly.GetAssembly(typeof(Organisation)));  // Include docs from Domain
 });
 
 var app = builder.Build();
@@ -33,14 +34,24 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var organisations = new[] {
-    new Organisation {Name = "Organisation 1"}, new Organisation {Name = "Organisation 2"}
-};
-
-app.MapGet("/organisations", (string? q) => {
-    return db.Organisations;
-})
-.WithName("GetOrganisation");
+app.MapPut("/organisations", async (string name) => {
+    var org = new Organisation {Name = name};
+    db.Organisations.Add(org);
+    await db.SaveChangesAsync();
+    return org;
+});
+app.MapGet("/organisations", () =>
+    db.Organisations
+);
+app.MapPatch("/organisations", async (Guid id, string name) => {
+    await db.Organisations
+        .Where(org => org.Id == id)
+        .ExecuteUpdateAsync(setters => 
+            setters.SetProperty(org => org.Name, name));
+});
+app.MapDelete("/organisations", async (Guid id) =>
+    await db.Organisations.Where(org => org.Id == id).ExecuteDeleteAsync()
+);
 
 app.MapGet("/inventory_items", () => db.InventoryItems);
 

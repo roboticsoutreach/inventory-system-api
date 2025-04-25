@@ -8,10 +8,10 @@ public abstract class AuditableEntity : IdentifiableEntity, IAuditableEntity
     /// <summary>
     /// The date and time the entity was created.
     /// </summary>
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
     /// <summary>
     /// The date and time the entity was last updated.
     /// </summary>
-    public DateTime UpdatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }

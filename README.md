@@ -8,7 +8,8 @@ More to follow soon.
 
 ```sh
 dotnet restore
-dotnet ef database update
+dotnet tool install --global dotnet-ef
+dotnet ef database update --project src/RoboticsOutreach.Inventory.Infrastructure
 ```
 
 ## Running
