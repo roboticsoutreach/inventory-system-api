@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace RoboticsOutreach.Inventory.Domain.Models;
 
 /// <summary>
