@@ -43,8 +43,8 @@ app.MapPut("/organisations", async (string name) =>
     await db.SaveChangesAsync();
     return Results.Created("/organisations", org);
 });
-app.MapGet("/organisations", () =>
-    db.Organisations
+app.MapGet("/organisations", async () =>
+    await db.Organisations.ToListAsync()
 );
 app.MapPatch("/organisations", async (Guid id, string name) =>
 {
