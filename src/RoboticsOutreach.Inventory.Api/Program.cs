@@ -38,7 +38,7 @@ app.MapPut("/organisations", async (string name) => {
     var org = new Organisation {Name = name};
     db.Organisations.Add(org);
     await db.SaveChangesAsync();
-    return org;
+    return Results.Created("/organisations", org);
 });
 app.MapGet("/organisations", () =>
     db.Organisations
@@ -46,17 +46,59 @@ app.MapGet("/organisations", () =>
 app.MapPatch("/organisations", async (Guid id, string name) => {
     await db.Organisations
         .Where(org => org.Id == id)
-        .ExecuteUpdateAsync(setters => 
+        .ExecuteUpdateAsync(setters =>
             setters.SetProperty(org => org.Name, name));
 });
 app.MapDelete("/organisations", async (Guid id) =>
-    await db.Organisations.Where(org => org.Id == id).ExecuteDeleteAsync()
+{
+    if (await db.Organisations.FindAsync(id) is Organisation org)
+    {
+        db.Organisations.Remove(org);
+        await db.SaveChangesAsync();
+        return Results.NoContent();
+    }
+
+    return Results.NotFound();
+}
 );
 
 app.MapGet("/inventory_items", () => db.InventoryItems);
+app.MapDelete("/inventory_items", async (Guid id) =>
+{
+    if (await db.InventoryItems.FindAsync(id) is InventoryItem item)
+    {
+        db.InventoryItems.Remove(item);
+        await db.SaveChangesAsync();
+        return Results.NoContent();
+    }
+
+    return Results.NotFound();
+});
 
 app.MapGet("/inventory_item_types", () => db.InventoryItemTypes);
+app.MapDelete("/inventory_item_types", async (Guid id) =>
+{
+    if (await db.InventoryItemTypes.FindAsync(id) is InventoryItemType itemType)
+    {
+        db.InventoryItemTypes.Remove(itemType);
+        await db.SaveChangesAsync();
+        return Results.NoContent();
+    }
+
+    return Results.NotFound();
+});
 
 app.MapGet("/bom_items", () => db.BomItems);
+app.MapDelete("/bom_items", async (Guid id) =>
+{
+    if (await db.BomItems.FindAsync(id) is BomItem item)
+    {
+        db.BomItems.Remove(item);
+        await db.SaveChangesAsync();
+        return Results.NoContent();
+    }
+
+    return Results.NotFound();
+});
 
 app.Run();
