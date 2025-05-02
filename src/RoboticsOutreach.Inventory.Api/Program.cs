@@ -11,13 +11,15 @@ using var db = new InventoryContext();
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options => {
-    options.SwaggerDoc("v1", new OpenApiInfo {
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
         Version = "v1",
         Title = "SRO Inventory API",
         Description = "The API for SRO's inventory database"
     });
-    
+
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
     options.IncludeXmlComments(Assembly.GetAssembly(typeof(Organisation)));  // Include docs from Domain
@@ -34,8 +36,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapPut("/organisations", async (string name) => {
-    var org = new Organisation {Name = name};
+app.MapPut("/organisations", async (string name) =>
+{
+    var org = new Organisation { Name = name };
     db.Organisations.Add(org);
     await db.SaveChangesAsync();
     return Results.Created("/organisations", org);
@@ -43,7 +46,8 @@ app.MapPut("/organisations", async (string name) => {
 app.MapGet("/organisations", () =>
     db.Organisations
 );
-app.MapPatch("/organisations", async (Guid id, string name) => {
+app.MapPatch("/organisations", async (Guid id, string name) =>
+{
     await db.Organisations
         .Where(org => org.Id == id)
         .ExecuteUpdateAsync(setters =>
@@ -59,8 +63,7 @@ app.MapDelete("/organisations", async (Guid id) =>
     }
 
     return Results.NotFound();
-}
-);
+});
 
 app.MapGet("/inventory_items", () => db.InventoryItems);
 app.MapDelete("/inventory_items", async (Guid id) =>
